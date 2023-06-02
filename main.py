@@ -9,10 +9,8 @@ def add_gaussian_noise(img, scale):
 
 def mul_gaussian_noise(img, scale):
     normal_distribution = np.random.normal(1, scale, img.shape)
-    img = (img / 255.0) * 2 - 1
     result = img * normal_distribution
-    result = np.clip(result, -1, 1)
-    result = (result + 1) * 255 / 2
+    result = np.clip(result, 0, 255)
     return result.astype(np.uint8)
 
 
